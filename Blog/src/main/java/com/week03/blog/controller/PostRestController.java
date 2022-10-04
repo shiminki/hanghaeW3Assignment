@@ -45,10 +45,7 @@ public class PostRestController {
     // Update post
     @PutMapping("/api/posts/{id}")
     public Long updatePost(@PathVariable Long id, @RequestBody PostRequestDto requestDto) {
-        PasswordRequestDto passwordRequestDto = new PasswordRequestDto(requestDto.getPassword());
-        if (loginAttempt(id, passwordRequestDto))
-            return postService.update(id, requestDto);
-        else return -1L;
+        return postService.update(id, requestDto);
     }
 
     // Delete post
